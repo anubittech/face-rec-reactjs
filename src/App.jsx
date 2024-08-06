@@ -88,7 +88,7 @@ const App = () => {
       Emplabels.map(async (labels) => {
         let descripions = [];
         for (let i = 1; i <= 2; i++) {
-          let img = await faceapi.fetchImage(`/Emplabels/${labels}/${i}.jpg`);
+          let img = await faceapi.fetchImage(`/Emp_Image/${labels}/${i}.jpg`);
           const detections = await faceapi
             .detectSingleFace(img)
             .withFaceLandmarks()
