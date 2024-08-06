@@ -68,10 +68,10 @@ const App = () => {
         drawBox.draw(canvasRef.current)
         console.log(`Detected: ${result.toString()}`);
       })
-      // faceapi.draw.drawDetections(canvasRef.current, resized);
+      faceapi.draw.drawDetections(canvasRef.current, resized);
 
-      // faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
-      // faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
+      faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
+      faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
     }, 100);
   }
   const LoadRefImage = () => {
