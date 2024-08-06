@@ -1,0 +1,19 @@
+.App {
+  border: 1px solid red;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Cam {
+  border: 1px solid red;
+
+  width: 30rem;
+  height: 100%;
+}
+video {
+  border: 1px solid red;
+  width: 100%;
+  margin-top: 10rem;
+}
