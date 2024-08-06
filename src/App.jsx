@@ -28,6 +28,7 @@ const App = () => {
     Promise.all([
       // THIS FOR FACE DETECT AND LOAD FROM YOU PUBLIC/MODELS DIRECTORY
       faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
+      faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
       faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
       faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
       faceapi.nets.faceExpressionNet.loadFromUri("/models"),
@@ -50,12 +51,12 @@ const App = () => {
       );
       console.log("draw canvas ");
       faceapi.matchDimensions(canvasRef.current, {
-        width: 940,
+        width: 555,
         height: 650,
       });
 
       const resized = faceapi.resizeResults(detections, {
-        width: 940,
+        width: 555,
         height: 650,
       });
 
@@ -63,7 +64,7 @@ const App = () => {
 
       faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
       faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
-    }, 1000);
+    }, 100);
   };
 
   return (
@@ -73,7 +74,7 @@ const App = () => {
       </div>
       <canvas
         ref={canvasRef}
-        width={"940"}
+        width={"555"}
         height={"650"}
         style={{ position: "absolute" }}
       ></canvas>
