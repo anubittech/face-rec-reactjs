@@ -14,7 +14,7 @@ const App = () => {
   // OPEN YOU FACE WEBCAM
   const startVideo = () => {
     navigator.mediaDevices
-      .getUserMedia({ video: true })
+      .getUserMedia({ video:{facingMode:"environment"} })
       .then((currentStream) => {
         videoRef.current.srcObject = currentStream;
       })
@@ -40,7 +40,10 @@ const App = () => {
 
   async function faceMyDetect() {
     const LabelFaceDetect = await LoadRefImage();
+    console.log("LoadRefImage() run");
+    
     const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect,0.6)
+    console.log("faceapi.FaceMatcher(LabelFaceDetect,0.6) run");
     setInterval(async () => {
       const detections = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
@@ -48,6 +51,7 @@ const App = () => {
         .withFaceExpressions();
 
       // DRAW YOU FACE IN WEBCAM
+      console.log("detection canvas ");
       canvasRef.current.innerHtml = faceapi.createCanvasFromMedia(
         videoRef.current
       );
@@ -75,7 +79,7 @@ const App = () => {
     }, 100);
   }
   const LoadRefImage = () => {
-    const Emplabels = ["Titas"];
+    // const Emplabels = ["Titas"];
     const Heroslabels = [
       "Black Widow",
       "Captain America",
@@ -85,10 +89,10 @@ const App = () => {
       "Thor",
     ];
     return Promise.all(
-      Emplabels.map(async (labels) => {
+      Heroslabels.map(async (labels) => {
         let descripions = [];
         for (let i = 1; i <= 2; i++) {
-          let img = await faceapi.fetchImage(`/Emp_Image/${labels}/${i}.jpg`);
+          let img = await faceapi.fetchImage(`/marvel_heros/${labels}/${i}.jpg`);
           const detections = await faceapi
             .detectSingleFace(img)
             .withFaceLandmarks()
