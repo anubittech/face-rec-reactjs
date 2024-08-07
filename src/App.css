@@ -8,7 +8,7 @@
 }
 .Cam {
   border: 1px solid black;
-
+background-color: white;
   width: 30rem;
   height: 100%;
 }
@@ -16,4 +16,14 @@ video {
   border: 1px solid black;
   width: 100%;
   margin-top: 10rem;
+}
+.BtnDiv{
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+button {
+  /* background: white; */
+  border: 1px solid black;
+  color: white;
 }
