@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     startVideo();
     videoRef && loadModels();
-  }, [videoRef]);
+  }, []);
 
   // OPEN YOU FACE WEBCAM
   const startVideo = () => {
