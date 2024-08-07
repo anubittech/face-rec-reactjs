@@ -5,7 +5,7 @@ import "./App.css";
 const App = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
-  const [faceing, setFacing] = useState("user");
+  const [faceing, setFaceing] = useState("user");
   // LOAD FROM USEEFFECT
   useEffect(() => {
     startVideo();
@@ -120,8 +120,8 @@ const App = () => {
       <div className="Cam">
         <video ref={videoRef} autoPlay crossOrigin="anonymous"></video>
         <div className="BtnDiv">
-          <button onClick={() => setFacing("user")}>Front Cam</button>
-          <button onClick={() => setFacing("environment")}>Back Cam</button>
+          <button onClick={() => setFaceing("user")}>Front Cam</button>
+          <button onClick={() => setFaceing("environment")}>Back Cam</button>
         </div>
       </div>
       <canvas
