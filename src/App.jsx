@@ -5,7 +5,7 @@ import "./App.css";
 const App = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
-  const [faceing,setFacing] = useState(true)
+  const [faceing, setFacing] = useState("user");
   // LOAD FROM USEEFFECT
   useEffect(() => {
     startVideo();
@@ -14,8 +14,10 @@ const App = () => {
 
   // OPEN YOU FACE WEBCAM
   const startVideo = () => {
+    console.log("FacingMode:", faceing);
+
     navigator.mediaDevices
-      .getUserMedia({ video: { facingMode:faceing ?"user":"environment" } })
+      .getUserMedia({ video: { facingMode: faceing } })
       .then((currentStream) => {
         videoRef.current.srcObject = currentStream;
       })
@@ -118,8 +120,8 @@ const App = () => {
       <div className="Cam">
         <video ref={videoRef} autoPlay crossOrigin="anonymous"></video>
         <div className="BtnDiv">
-
-        <button onClick={()=>setFacing(!faceing)}>Flip Cam</button>
+          <button onClick={() => setFacing("user")}>Front Cam</button>
+          <button onClick={() => setFacing("environment")}>Back Cam</button>
         </div>
       </div>
       <canvas
