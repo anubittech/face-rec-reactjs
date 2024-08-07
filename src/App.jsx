@@ -43,10 +43,10 @@ const App = () => {
   };
 
   async function faceMyDetect() {
-    const LabelFaceDetect = await LoadRefImage();
+    // const LabelFaceDetect = await LoadRefImage();
     console.log("LoadRefImage() run");
 
-    const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect, 0.6);
+    // const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect, 0.6);
     // console.log("faceapi.FaceMatcher(LabelFaceDetect,0.6) run");
     setInterval(async () => {
       const detections = await faceapi
@@ -70,20 +70,20 @@ const App = () => {
         width: 555,
         height: 650,
       });
-      let faceruslts = resized.map((d) =>
-        faceMatcher.findBestMatch(d.detection)
-      );
-      faceruslts.forEach((result, i) => {
-        const faceBox = resized[i].detection.box;
-        const drawBox = new faceapi.draw.DrawBox(faceBox, {
-          label: result.toString(),
-        });
-        drawBox.draw(canvasRef.current);
-        console.log(`Detected: ${result.toString()}`);
-      });
+      // let faceruslts = resized.map((d) =>
+      //   faceMatcher.findBestMatch(d.detection)
+      // );
+      // faceruslts.forEach((result, i) => {
+      //   const faceBox = resized[i].detection.box;
+      //   const drawBox = new faceapi.draw.DrawBox(faceBox, {
+      //     label: result.toString(),
+      //   });
+      //   drawBox.draw(canvasRef.current);
+      //   console.log(`Detected: ${result.toString()}`);
+      // });
       faceapi.draw.drawDetections(canvasRef.current, resized);
 
-      faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
+      // faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
       faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
     }, 100);
   }
