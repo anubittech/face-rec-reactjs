@@ -52,7 +52,8 @@ const App = () => {
       const detections = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
-        .withFaceExpressions();
+        .withFaceExpressions()
+        .withFaceDescriptors();
 
       // DRAW YOU FACE IN WEBCAM
       console.log("detection canvas ");
@@ -101,16 +102,15 @@ const App = () => {
         let descripions = [];
         for (let i = 1; i <= 2; i++) {
           let img = await faceapi.fetchImage(
-            ` https://raw.githubusercontent.com/anubittech/face-rec-reactjs/master/public/marvel_heros/${labels}/${i}.jpg`
+            `/marvel_heros/${labels}/${i}.jpg`
           );
- 
+
           const detections = await faceapi
             .detectSingleFace(img)
             .withFaceLandmarks()
             .withFaceDescriptor();
-          if (detections) {
-            descripions.push(detections.descriptor);
-          }
+
+          descripions.push(detections.descriptor);
         }
         return new faceapi.LabeledFaceDescriptors(labels, descripions);
       })
@@ -134,5 +134,6 @@ const App = () => {
     </main>
   );
 };
+// ` https://raw.githubusercontent.com/anubittech/face-rec-reactjs/master/public/marvel_heros/${labels}/${i}.jpg`
 
 export default App;
