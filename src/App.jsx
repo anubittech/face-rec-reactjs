@@ -46,7 +46,7 @@ const App = () => {
     // const LabelFaceDetect = await LoadRefImage();
     console.log("LoadRefImage() run");
 
-    const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect, 0.6);
+    // const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect, 0.6);
     console.log("faceapi.FaceMatcher(LabelFaceDetect,0.6) run");
     setInterval(async () => {
       const detections = await faceapi
