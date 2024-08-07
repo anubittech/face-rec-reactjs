@@ -39,8 +39,8 @@ const App = () => {
   };
 
   async function faceMyDetect() {
-    const LabelFaceDetect = await LoadRefImage();
-    const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect,0.6)
+    // const LabelFaceDetect = await LoadRefImage();
+    // const faceMatcher = new faceapi.FaceMatcher(LabelFaceDetect,0.6)
     setInterval(async () => {
       const detections = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
@@ -61,13 +61,13 @@ const App = () => {
         width: 555,
         height: 650,
       });
-      let faceruslts = resized.map(d => faceMatcher.findBestMatch(d.detection));
-      faceruslts.forEach((result,i)=>{
-        const faceBox = resized[i].detection.box;
-        const drawBox = new faceapi.draw.DrawBox(faceBox,{label:result.toString()});
-        drawBox.draw(canvasRef.current)
-        console.log(`Detected: ${result.toString()}`);
-      })
+      // let faceruslts = resized.map(d => faceMatcher.findBestMatch(d.detection));
+      // faceruslts.forEach((result,i)=>{
+      //   const faceBox = resized[i].detection.box;
+      //   const drawBox = new faceapi.draw.DrawBox(faceBox,{label:result.toString()});
+      //   drawBox.draw(canvasRef.current)
+      //   console.log(`Detected: ${result.toString()}`);
+      // })
       faceapi.draw.drawDetections(canvasRef.current, resized);
 
       faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
